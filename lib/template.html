@@ -15,7 +15,7 @@
 
 <meta property="og:locale" content="{{ seo_tag.page_locale }}" />
 
-{% if page.layout != 'post' %}
+{% if page.layout == 'post' %}
   {% if page.content %}
     {% assign description = page.content | strip_html | strip_newlines | truncate: 150 %}
     <meta name="description" content="{{ description }}" />
