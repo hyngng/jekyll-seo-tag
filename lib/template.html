@@ -15,21 +15,19 @@
 
 <meta property="og:locale" content="{{ seo_tag.page_locale }}" />
 
-<!--
-{% if seo_tag.description? %}
+{% if page.layout != 'post' %}
+  {% if page.content %}
+    {% assign description = page.content | strip_html | strip_newlines | truncate: 150 %}
+    <meta name="description" content="{{ description }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="twitter:description" content="{{ description }}" />
+  {% endif %}
+{% else %}
+  {% if seo_tag.description? %}
   <meta name="description" content="{{ seo_tag.description }}" />
   <meta property="og:description" content="{{ seo_tag.description }}" />
   <meta property="twitter:description" content="{{ seo_tag.description }}" />
 {% endif %}
--->
-
-{% if page.content %}
-  {% assign description = page.content | strip_html | strip_newlines | truncate: 150 %}
-  <meta name="description" content="{{ description }}" />
-  <meta property="og:description" content="{{ description }}" />
-  <meta property="twitter:description" content="{{ description }}" />
-{% endif %}
-<meta name="description" content="테스트" />
 
 {% if site.url %}
   <link rel="canonical" href="{{ seo_tag.canonical_url }}" />
