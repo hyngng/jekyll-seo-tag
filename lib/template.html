@@ -17,7 +17,7 @@
 
 {% if page.layout == 'post' %}
   {% if page.content %}
-    {% assign description = page.content | strip_html | strip_newlines | truncate: 150 %}
+    {% assign description = page.content | remove_tag: 'h2', 'em', 'blockquote', 'pre' | strip_html | strip_newlines | truncate: 150 %}
     <meta name="description" content="{{ description }}" />
     <meta property="og:description" content="{{ description }}" />
     <meta property="twitter:description" content="{{ description }}" />
