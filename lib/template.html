@@ -18,13 +18,13 @@
 {% if page.layout == 'post' %}
   {% if page.content %}
     {% assign description = page.content | remove_tag: 'h2', 'h3', 'em', 'blockquote', 'pre' | strip_html | strip_newlines | truncate: 150 %}
-    <meta name="description" content="적용됨{{ description }}" />
+    <meta name="description" content="{{ description }}" />
     <meta property="og:description" content="{{ description }}" />
     <meta property="twitter:description" content="{{ description }}" />
   {% endif %}
 {% else %}
   {% if seo_tag.description %}
-    <meta name="description" content="적용됨{{ seo_tag.description }}" />
+    <meta name="description" content="{{ seo_tag.description }}" />
     <meta property="og:description" content="{{ seo_tag.description }}" />
     <meta property="twitter:description" content="{{ seo_tag.description }}" />
   {% endif %}
